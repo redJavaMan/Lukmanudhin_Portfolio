@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadResumeBtn.addEventListener('click', function(e) {
             e.preventDefault();
             // Replace with your actual resume file path
-            const resumeUrl = 'Lukmanudhin Resume V4.1.pdf';
+            const resumeUrl = 'Lukmanudhin_Resume.pdf';
             
             // Create a temporary link to trigger download
             const tempLink = document.createElement('a');
             tempLink.href = resumeUrl;
-            tempLink.setAttribute('download', 'Mohammed_Lukmanudhin_Resume.pdf');
+            tempLink.setAttribute('download', 'Lukmanudhin_Resume.pdf');
             tempLink.click();
         });
     }
