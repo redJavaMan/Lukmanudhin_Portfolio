@@ -294,4 +294,55 @@ document.addEventListener('DOMContentLoaded', function() {
             img.style.cursor = 'pointer';
         });
     }
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+    });
+
+    // Prevent background scroll when menu is open
+    hamburger.addEventListener('click', function() {
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Smooth scroll for mobile
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add touch support for project images
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.querySelectorAll('.project-img').forEach(img => {
+        img.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        img.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (Math.abs(touchEndX - touchStartX) < 5) {
+                const projectCard = this.closest('.project-card');
+                const projectLink = projectCard.querySelector('.project-links a').getAttribute('href');
+                window.open(projectLink, '_blank');
+            }
+        });
+    });
 });
