@@ -203,6 +203,13 @@ document.addEventListener('DOMContentLoaded', function() {
             Integrated Extent Reports for detailed test result visualization and documentation. The framework includes configurable test execution parameters, cross-browser testing capabilities, and a structured approach to web element interactions, significantly improving test reliability and reducing maintenance overhead.`,
             skills: ["Java", "Selenium WebDriver", "Extent Report", "TestNG", "Maven", "Page Object Model"],
             link: "https://github.com/redJavaMan/flipkart-ui-e2e-test"
+        },
+        project6: {
+            title: "SauceLabs UI Automation Testing",
+            description: `This project automates testing for SauceDemo's shopping cart functionality using Selenium WebDriver, TestNG, and the Page Object Model (POM). It validates adding products, verifying details, and completing checkout. Built with Java, Maven, and Allure Reporting, 
+            it supports parallel execution and cross-browser testing. Ideal for showcasing expertise in test automation, POM design, and reporting frameworks.`,
+            skills: ["Java", "Selenium WebDriver", "Allure Report", "TestNG", "Maven", "Page Object Model"],
+            link: "https://github.com/redJavaMan/saucelabs-ui-e2e-test"
         }
     };
 
