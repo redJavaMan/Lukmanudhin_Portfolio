@@ -43,7 +43,7 @@ Automation Test Engineer with expertise in healthcare domain software testing. P
       <h3 align="center">Amazon E2E Tests with Cucumber</h3>
       <div align="center">
         <a href="https://github.com/redJavaMan/amazon-ui-e2e-tests-cucumber" target="_blank">
-          <img src="Images/Amazon.jpg" width="400" alt="Cucumber Selenium Project"/>
+          <img src="Amazon.jpg" width="400" alt="Cucumber Selenium Project"/>
         </a>
         <p>
           <a href="https://github.com/redJavaMan/amazon-ui-e2e-tests-cucumber" target="_blank">
