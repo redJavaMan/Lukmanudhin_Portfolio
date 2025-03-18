@@ -18,8 +18,8 @@
     --section-bg: #0a0a0a;
     --border-color: #222222;
     --neon-text-shadow: 0 0 5px rgba(0, 168, 255, 0.7), 0 0 10px rgba(0, 168, 255, 0.5);
-    --yellow-text-shadow: 0 0 5px rgba(255, 204, 0, 0.7), 0 0 10px rgba(255, 204, 0, 0.5);
-    --red-text-shadow: 0 0 5px rgba(255, 51, 102, 0.7), 0 0 10px rgba(255, 51, 102, 0.5);
+    /* --yellow-text-shadow: 0 0 5px rgba(255, 204, 0, 0.7), 0 0 10px rgba(255, 204, 0, 0.5); */
+    /* --red-text-shadow: 0 0 5px rgba(255, 51, 102, 0.7), 0 0 10px rgba(255, 51, 102, 0.5); */
 }
 
 * {
