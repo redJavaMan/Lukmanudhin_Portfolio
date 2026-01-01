@@ -210,6 +210,29 @@ document.addEventListener('DOMContentLoaded', function() {
             it supports parallel execution and cross-browser testing. Ideal for showcasing expertise in test automation, POM design, and reporting frameworks.`,
             skills: ["Java", "Selenium WebDriver", "Allure Report", "TestNG", "Maven", "Page Object Model"],
             link: "https://github.com/redJavaMan/saucelabs-ui-e2e-test"
+        },
+        project7: {
+            title: "AI-Powered Automation Framework using Playwright MCP",
+            description: `A comprehensive Playwright test automation framework leveraging AI agents through Model Context Protocol (MCP). Features three specialized AI agents: Test Planner for exploring web applications and creating test plans, Test Generator for converting plans into executable Playwright tests, 
+            and Test Healer for automatically debugging and fixing failing tests. Built with TypeScript, implements Page Object Model pattern, and includes smoke tests for PrestaShop demo site. Integrates Faker.js for dynamic test data generation, custom fixtures, and CSV-based credential management. Demonstrates intelligent test creation, maintenance, and self-healing capabilities powered by Playwright MCP server.`,
+            skills: ["Playwtight", "TypeScript", "MCP", "AI-Agent", "Page Object Model"],
+            link: "https://github.com/redJavaMan/AI-AGENT-MCP-TEST/"
+        },
+        project8: {
+            title: "Selenium MCP Integration with AI Agent",
+            description: `A comprehensive end-to-end test automation framework for the DemoBlaze e-commerce application, built using Selenium WebDriver, Java, Cucumber BDD, and enhanced with AI-powered test generation capabilities through Selenium MCP and Claude AI agents.
+            This project demonstrates modern test automation practices by combining traditional Selenium testing with cutting-edge AI assistance. The framework uses Selenium MCP (Model Context Protocol) integration with Claude AI agents to intelligently generate, maintain, and evolve test cases based on the Page Object Model design pattern, enabling automated test creation, smart locator selection, 
+            and continuous code quality improvement through AI collaboration.`,
+            skills: ["Java", "Selenium WebDriver", "Cucumber (BDD)", "TestNG", "Maven", "Page Object Model", "MCP", "AI-Agent", "Allure Report"],
+            link: "https://github.com/redJavaMan/demoblaze-selenium-cucumber-mcp"
+        },
+        project9: {
+            title: "Amazon ZeroStep AI Automation Framework",
+            description: `A comprehensive Playwright-based automation framework for testing Amazon across 16+ global marketplaces (US, UK, AU, IN, DE, FR, JP, CN, etc.). Features include AI-powered testing via ZeroStep integration, Page Object Model architecture, automated language detection and switching, dynamic user data generation with unique timestamped emails, 
+            and complete account lifecycle management (creation, address setup, payment configuration). Supports parallel execution, cross-browser testing, and provides detailed HTML reports with failure screenshots/videos. Includes OTP polling for verification, multi-popup handling, and environment-specific configurations. 
+            Ideal for comprehensive e-commerce testing across diverse geographical regions with minimal maintenance overhead.`,
+            skills: ["Playwright", "TypeScript", "ZeroStep AI", "AI-Agent", "Page Object Model"],
+            link: "https://github.com/redJavaMan/Amazon-zerostep-automation"
         }
     };
 
