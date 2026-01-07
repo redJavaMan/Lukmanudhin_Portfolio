@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroSubtitle = document.querySelector('.hero-content h2');
     if (heroSubtitle) {
         heroSubtitle.innerHTML = '';
-        typeEffect(heroSubtitle, 'Automation Test Engineer', 100);
+        typeEffect(heroSubtitle, 'SOFTWARE DEVELOPMENT ENGINEER IN TEST', 100);
     }
 
     // ------- PROJECT SECTION FUNCTIONALITY -------
