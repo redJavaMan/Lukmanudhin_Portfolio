@@ -318,20 +318,267 @@ section {
     text-align: center;
 }
 
+/* Profile Image Container with Animated Glow */
 .image-container {
     width: 300px;
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
     margin: 0 auto;
-    border: 2px solid var(--primary-color);
+    position: relative;
+    border: 3px solid var(--primary-color);
+    animation: profileGlow 3s ease-in-out infinite;
+    box-shadow: 
+        0 0 20px rgba(0, 168, 255, 0.6),
+        0 0 40px rgba(0, 168, 255, 0.4),
+        0 0 60px rgba(0, 168, 255, 0.2),
+        inset 0 0 20px rgba(0, 168, 255, 0.1);
+}
+
+/* Animated rotating gradient border effect */
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(
+        45deg,
+        #00a8ff,
+        #ffcc00,
+        #ff3366,
+        #00a8ff,
+        #ffcc00
+    );
+    background-size: 300% 300%;
+    z-index: -1;
+    animation: gradientRotate 4s linear infinite;
+    filter: blur(8px);
+}
+
+/* Inner rotating ring */
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg 90deg,
+        rgba(0, 168, 255, 0.8) 90deg 180deg,
+        transparent 180deg 270deg,
+        rgba(255, 204, 0, 0.8) 270deg 360deg
+    );
+    z-index: -1;
+    animation: ringRotate 3s linear infinite;
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    animation: imageFloat 6s ease-in-out infinite;
+}
+
+/* Hover effect */
+.image-container:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 30px rgba(0, 168, 255, 0.8),
+        0 0 60px rgba(0, 168, 255, 0.6),
+        0 0 90px rgba(0, 168, 255, 0.4),
+        inset 0 0 30px rgba(0, 168, 255, 0.2);
+    animation: profileGlowHover 1.5s ease-in-out infinite;
+}
+
+.image-container:hover::before {
+    animation: gradientRotate 2s linear infinite;
+}
+
+.image-container:hover::after {
+    animation: ringRotate 1.5s linear infinite;
+}
+
+/* Keyframe Animations */
+@keyframes profileGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(0, 168, 255, 0.6),
+            0 0 40px rgba(0, 168, 255, 0.4),
+            0 0 60px rgba(0, 168, 255, 0.2),
+            inset 0 0 20px rgba(0, 168, 255, 0.1);
+    }
+    25% {
+        box-shadow: 
+            0 0 25px rgba(255, 204, 0, 0.6),
+            0 0 50px rgba(255, 204, 0, 0.4),
+            0 0 75px rgba(255, 204, 0, 0.2),
+            inset 0 0 25px rgba(255, 204, 0, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 51, 102, 0.6),
+            0 0 60px rgba(255, 51, 102, 0.4),
+            0 0 90px rgba(255, 51, 102, 0.2),
+            inset 0 0 30px rgba(255, 51, 102, 0.1);
+    }
+    75% {
+        box-shadow: 
+            0 0 25px rgba(255, 204, 0, 0.6),
+            0 0 50px rgba(255, 204, 0, 0.4),
+            0 0 75px rgba(255, 204, 0, 0.2),
+            inset 0 0 25px rgba(255, 204, 0, 0.1);
+    }
+}
+
+@keyframes profileGlowHover {
+    0%, 100% {
+        box-shadow: 
+            0 0 30px rgba(0, 168, 255, 0.8),
+            0 0 60px rgba(0, 168, 255, 0.6),
+            0 0 90px rgba(0, 168, 255, 0.4),
+            inset 0 0 30px rgba(0, 168, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 40px rgba(255, 51, 102, 0.8),
+            0 0 80px rgba(255, 51, 102, 0.6),
+            0 0 120px rgba(255, 51, 102, 0.4),
+            inset 0 0 40px rgba(255, 51, 102, 0.2);
+    }
+}
+
+@keyframes gradientRotate {
+    0% {
+        background-position: 0% 50%;
+        transform: rotate(0deg);
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes imageFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Pulsing particles effect around the image */
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        transparent 40%,
+        rgba(0, 168, 255, 0.1) 40%,
+        rgba(0, 168, 255, 0.1) 45%,
+        transparent 45%
+    );
+    animation: particlePulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 340px;
+    height: 340px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        transparent 40%,
+        rgba(255, 204, 0, 0.08) 40%,
+        rgba(255, 204, 0, 0.08) 45%,
+        transparent 45%
+    );
+    animation: particlePulse 4s ease-in-out infinite reverse;
+    pointer-events: none;
+}
+
+@keyframes particlePulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Make about-image position relative for pseudo-elements */
+.about-image {
+    text-align: center;
+    position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .about-image::before {
+        width: 270px;
+        height: 270px;
+    }
+    
+    .about-image::after {
+        width: 290px;
+        height: 290px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .about-image::before {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .about-image::after {
+        width: 240px;
+        height: 240px;
+    }
 }
 
 .about-text h3 {
