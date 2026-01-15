@@ -1,6 +1,62 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation
+    // ========== HERO SECTION ANIMATIONS ==========
+    // Create floating particles in hero section
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        if (!particlesContainer) return;
+        
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            
+            // Random animation duration
+            const duration = Math.random() * 20 + 10;
+            particle.style.animationDuration = duration + 's';
+            
+            // Random delay
+            const delay = Math.random() * 5;
+            particle.style.animationDelay = delay + 's';
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Initialize particles on page load
+    createParticles();
+
+    // Add mouse move parallax effect to hero section
+    const hero = document.querySelector('.hero');
+    const floatingShapes = document.querySelector('.floating-shapes');
+
+    if (hero && floatingShapes) {
+        hero.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 50;
+                const y = (mouseY - 0.5) * speed * 50;
+                
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    }
+
+    // ========== MOBILE NAVIGATION ==========
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navLinksItems = document.querySelectorAll('.nav-links a');
@@ -21,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar scroll effect
+    // ========== NAVBAR SCROLL EFFECT ==========
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
@@ -33,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Active navigation link based on scroll position
+    // ========== ACTIVE NAVIGATION LINK ==========
     const sections = document.querySelectorAll('section');
     const navLinks2 = document.querySelectorAll('.nav-links a');
 
@@ -57,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Back to top button
+    // ========== BACK TO TOP BUTTON ==========
     const backToTopButton = document.querySelector('.back-to-top');
     
     window.addEventListener('scroll', function() {
@@ -68,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Download Resume Button
+    // ========== DOWNLOAD RESUME BUTTON ==========
     const downloadResumeBtn = document.getElementById('download-resume');
     if (downloadResumeBtn) {
         downloadResumeBtn.addEventListener('click', function(e) {
@@ -84,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Contact Form Submission
+    // ========== CONTACT FORM SUBMISSION ==========
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -105,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animation on scroll (simple implementation)
+    // ========== ANIMATION ON SCROLL ==========
     function animateOnScroll() {
         const elements = document.querySelectorAll('.skill-item, .achievement-item, .education-item, .cert-item, .project-card');
         
@@ -133,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
 
-    // Typing animation for hero section
+    // ========== TYPING ANIMATION FOR HERO SECTION ==========
     function typeEffect(element, text, speed) {
         let i = 0;
         
@@ -148,14 +204,15 @@ document.addEventListener('DOMContentLoaded', function() {
         typing();
     }
 
-    //Initialize typing effect - uncomment to use
+    // Initialize typing effect - uncomment to use
     const heroSubtitle = document.querySelector('.hero-content h2');
     if (heroSubtitle) {
+        const originalText = heroSubtitle.textContent;
         heroSubtitle.innerHTML = '';
-        typeEffect(heroSubtitle, 'SOFTWARE DEVELOPMENT ENGINEER IN TEST', 100);
+        typeEffect(heroSubtitle, originalText, 100);
     }
 
-    // ------- PROJECT SECTION FUNCTIONALITY -------
+    // ========== PROJECT SECTION FUNCTIONALITY ==========
     // Project data
     const projectData = {
         project1: {

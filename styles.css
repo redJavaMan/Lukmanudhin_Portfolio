@@ -196,47 +196,506 @@ section {
     transition: var(--transition);
 }
 
-/* Hero Section */
+/* Hero Section - Replace the existing .hero styles with these */
 .hero {
-    height: 100vh;
-    background: radial-gradient(circle at center, rgba(0, 168, 255, 0.1) 0%, rgba(3, 3, 3, 1) 70%);
+    position: relative;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     padding-top: 80px;
+    overflow: hidden;
 }
 
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
-.hero-content h1 {
-    font-size: 48px;
+/* Animated gradient background - Sunset/Golden Hour Theme */
+.animated-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        #1a1a2e 0%,
+        #2d1b2e 20%,
+        #3d2434 40%,
+        #4d2d3a 60%,
+        #2d1b2e 80%,
+        #1a1a2e 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* City silhouette overlay */
+.city-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+    z-index: 1;
+}
+
+.city-silhouette::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 183, 77, 0.3) 20%,
+        rgba(255, 152, 0, 0.5) 50%,
+        rgba(255, 183, 77, 0.3) 80%,
+        transparent 100%
+    );
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
+}
+
+/* Floating shapes - Warm sunset colors */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.25;
+}
+
+.shape-1 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.4) 0%, transparent 70%);
+    top: 15%;
+    left: 10%;
+    animation: float 22s ease-in-out infinite;
+}
+
+.shape-2 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255, 183, 77, 0.35) 0%, transparent 70%);
+    top: 50%;
+    right: 15%;
+    animation: float 18s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(255, 138, 101, 0.3) 0%, transparent 70%);
+    bottom: 25%;
+    left: 25%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.shape-4 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(239, 108, 0, 0.25) 0%, transparent 70%);
+    top: 35%;
+    right: 30%;
+    animation: float 25s ease-in-out infinite;
+}
+
+.shape-5 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 167, 38, 0.35) 0%, transparent 70%);
+    bottom: 35%;
+    right: 45%;
+    animation: float 24s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+/* Particles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero content */
+.hero .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+}
+
+.hero-text-content {
+    padding-right: 20px;
+    animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-text-content h1 {
+    font-size: 52px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: var(--true-white);
-    text-shadow: var(--neon-text-shadow);
+    text-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
+    line-height: 1.2;
 }
 
-.hero-content h2 {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: var(--danger-color);
-    text-shadow: var(--red-text-shadow);
+.hero-text-content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #ffb74d;
+    text-shadow: 0 0 15px rgba(255, 183, 77, 0.5);
+    letter-spacing: 1px;
 }
 
-.hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: var(--secondary-color);
+.hero-text-content p {
+    font-size: 17px;
+    margin-bottom: 35px;
+    color: #b0b0b0;
+    line-height: 1.8;
 }
 
 .hero-buttons {
     display: flex;
-    justify-content: center;
     gap: 20px;
+}
+
+/* Profile Section on the Right */
+.hero-profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1s ease-out;
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-profile-image {
+    position: relative;
+    width: 380px;
+    height: 380px;
+}
+
+.hero-profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+    border: 3px solid rgba(255, 152, 0, 0.4);
+    box-shadow: 
+        0 0 40px rgba(255, 152, 0, 0.4),
+        0 0 80px rgba(255, 152, 0, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.hero-profile-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Glowing background effect - Warm sunset glow */
+.profile-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 420px;
+    border-radius: 20px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 152, 0, 0.3) 0%,
+        rgba(255, 183, 77, 0.2) 40%,
+        transparent 70%
+    );
+    animation: pulseGlowWarm 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes pulseGlowWarm {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 0.8;
+    }
+}
+
+/* Rotating ring - Sunset colors */
+.profile-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 420px;
+    border-radius: 20px;
+    border: 3px solid transparent;
+    border-top-color: rgba(255, 152, 0, 0.6);
+    border-right-color: rgba(255, 183, 77, 0.5);
+    border-bottom-color: rgba(255, 138, 101, 0.5);
+    border-left-color: rgba(239, 108, 0, 0.4);
+    animation: rotateRing 6s linear infinite;
+    z-index: 2;
+}
+
+@keyframes rotateRing {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Update button styles for sunset theme */
+.primary-btn {
+    background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+    color: var(--true-white);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 152, 0, 0.6);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: #ffb74d;
+    border: 2px solid #ffb74d;
+    box-shadow: 0 0 10px rgba(255, 183, 77, 0.2);
+}
+
+.secondary-btn:hover {
+    background-color: rgba(255, 183, 77, 0.1);
+    color: #ffb74d;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255, 183, 77, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero-content-wrapper {
+        gap: 40px;
+    }
+
+    .hero-profile-image {
+        width: 320px;
+        height: 320px;
+    }
+
+    .profile-glow {
+        width: 360px;
+        height: 360px;
+    }
+
+    .profile-ring {
+        width: 360px;
+        height: 360px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 60px;
+    }
+
+    .hero-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .hero-text-content {
+        padding-right: 0;
+        order: 2;
+    }
+
+    .hero-profile-section {
+        order: 1;
+    }
+
+    .hero-profile-image {
+        width: 280px;
+        height: 280px;
+    }
+
+    .profile-glow {
+        width: 320px;
+        height: 320px;
+    }
+
+    .profile-ring {
+        width: 320px;
+        height: 320px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-text-content h2 {
+        font-size: 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .shape {
+        filter: blur(50px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-profile-image {
+        width: 240px;
+        height: 240px;
+    }
+
+    .profile-glow {
+        width: 280px;
+        height: 280px;
+    }
+
+    .profile-ring {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-text-content h2 {
+        font-size: 18px;
+    }
+
+    .hero-text-content p {
+        font-size: 16px;
+    }
+}
+
+/* Add this CSS to your styles.css for the particle animation - Sunset Theme */
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.8) 0%, transparent 70%);
+    pointer-events: none;
+    animation: particleFloat linear infinite;
+    opacity: 0;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(1);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0);
+    }
+}
+
+/* Alternate particle colors - Warm sunset palette */
+.particle:nth-child(3n) {
+    background: radial-gradient(circle, rgba(255, 183, 77, 0.7) 0%, transparent 70%);
+}
+
+.particle:nth-child(3n+1) {
+    background: radial-gradient(circle, rgba(255, 138, 101, 0.6) 0%, transparent 70%);
+}
+
+.particle:nth-child(3n+2) {
+    background: radial-gradient(circle, rgba(239, 108, 0, 0.65) 0%, transparent 70%);
+}
+
+.particle:nth-child(5n) {
+    background: radial-gradient(circle, rgba(255, 167, 38, 0.7) 0%, transparent 70%);
+}
+
+.particle:nth-child(7n) {
+    background: radial-gradient(circle, rgba(255, 112, 67, 0.6) 0%, transparent 70%);
 }
 
 /* About Section */
