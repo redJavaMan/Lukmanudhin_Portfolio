@@ -337,12 +337,12 @@ section {
     text-align: center;
 }
 
+/* Profile Image Container with Animated Glow */
 .image-container {
     width: 300px;
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
     margin: 0 auto;
     border: 2px solid var(--primary-color);
     animation: float 3s ease-in-out infinite, colorfulGlow 4s ease-in-out infinite, rotateBorder 8s linear infinite;
