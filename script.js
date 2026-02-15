@@ -139,20 +139,47 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function typing() {
             if (i < text.length) {
-                element.innerHTML += text.charAt(i);
+                element.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
                 i++;
                 setTimeout(typing, speed);
+            } else {
+                // Show cursor after typing complete
+                element.innerHTML = text + '<span class="cursor">|</span>';
+                // After typing is complete, wait then backspace
+                setTimeout(() => {
+                    backspaceEffect(element, text, speed);
+                }, 2500);
             }
         }
         
         typing();
     }
 
+    function backspaceEffect(element, text, speed) {
+        let i = text.length;
+        
+        function backspacing() {
+            if (i > 0) {
+                element.innerHTML = text.substring(0, i - 1) + '<span class="cursor">|</span>';
+                i--;
+                setTimeout(backspacing, speed);
+            } else {
+                // After backspace is complete, type again
+                element.innerHTML = '<span class="cursor">|</span>';
+                setTimeout(() => {
+                    typeEffect(element, text, speed);
+                }, 500);
+            }
+        }
+        
+        backspacing();
+    }
+
     //Initialize typing effect - uncomment to use
     const heroSubtitle = document.querySelector('.hero-content h2');
     if (heroSubtitle) {
         heroSubtitle.innerHTML = '';
-        typeEffect(heroSubtitle, 'SOFTWARE DEVELOPMENT ENGINEER IN TEST', 100);
+        typeEffect(heroSubtitle, 'SOFTWARE DEVELOPMENT ENGINEER IN TEST', 120);
     }
 
     // ------- PROJECT SECTION FUNCTIONALITY -------
